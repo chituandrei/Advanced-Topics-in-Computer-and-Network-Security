@@ -6,14 +6,13 @@
 
 ## Team
 
-| Member | Focus area |
-|--------|------------|
+| Member |
+|--------|
 | **Costin Bosoaga** |
 | **Stefan Anton**  |
 | **Luca Patrascu** |
 | **Andrei Chitu** |
 
-All four members present at the weekly M1 evaluations. Each member covers their own focus area.
 
 ## Motivation
 
