@@ -1,6 +1,6 @@
 # Quantum-Safe Transport: Migrating TLS, HTTPS, QUIC and SSH to Post-Quantum Cryptography
 
-**Course:** Advanced Topics in Computer and Network Security (Master, Year 2)
+**Course:** Advanced Topics in Computer and Network Security
 **General theme:** Transport Layer Security: SSL, TLS, SSH, HTTPS
 **Selected topic:** Post-quantum migration of transport-layer security protocols
 
@@ -42,32 +42,18 @@ Larger handshakes split the ClientHello across packets, which has broken some se
 4. **Robustness:** What new risks does the migration introduce, such as implementation side channels, downgrade attacks on hybrid negotiation and middlebox ossification?
 5. **Protocol comparison:** How do TLS 1.3, QUIC and SSH each handle the transition, and which design makes migration easiest (crypto-agility)?
 
-## Milestones and Grading
-
-Final grade = **(2·M1 + M2 + M3) / 4**
-
-| Milestone | Weight | Content | Deadline |
-|-----------|--------|---------|----------|
-| **M1**: Overview | 50% | State of the art, comparison of solutions and implementations, personal comments. Evaluated weekly during classes. Includes a presentation by all team members. | 01.12.2026 |
-| **M2**: Improvements | 25% | Proposed improvements to the topic or to a particular case. | 12.12.2026 |
-| **M3**: Scientific paper | 25% | Full paper combining M1 and M2, plus implementation details and results. | End of semester (before the exam) |
-
-- A milestone is gradable only if a written paper exists.
-- M2 and M3 are graded only after M1 has been graded.
-- Each paper is uploaded to the course forum by one team member. Hard deadline: 11.01.2026, as stated in the course description. This is most likely a typo for 11.01.2027, so confirm it with the professor.
-
 ## Plan
 
 ### M1: Overview
 
-| Week | Topic | Lead |
-|------|-------|------|
-| 1 | Topic introduction, motivation, the quantum threat | All |
-| 2 | TLS 1.3, HTTPS and QUIC handshakes; NIST PQC standards (ML-KEM, ML-DSA, SLH-DSA) | Costin, Stefan |
-| 3 | Hybrid key exchange in TLS and QUIC (X25519MLKEM768); PQ in SSH | Costin, Luca |
-| 4 | PQ authentication and certificates; implementation comparison (OpenSSL 3.5 / oqs-provider, BoringSSL, rustls, wolfSSL, OpenSSH) | Luca, Andrei |
-| 5 | Attacks and pitfalls: SIKE break, side channels (KyberSlash), downgrade, middlebox issues | Stefan, Andrei |
-| 6 | Deployment status, comparison tables, personal conclusions (before 01.12.2026) | All |
+| Topic | Lead |
+|-------|------|
+| Topic introduction, motivation, the quantum threat | All |
+| TLS 1.3, HTTPS and QUIC handshakes; NIST PQC standards (ML-KEM, ML-DSA, SLH-DSA) | Costin, Stefan |
+| Hybrid key exchange in TLS and QUIC (X25519MLKEM768); PQ in SSH | Costin, Luca |
+| PQ authentication and certificates; implementation comparison (OpenSSL 3.5 / oqs-provider, BoringSSL, rustls, wolfSSL, OpenSSH) | Luca, Andrei |
+| Attacks and pitfalls: SIKE break, side channels (KyberSlash), downgrade, middlebox issues | Stefan, Andrei |
+| Deployment status, comparison tables, personal conclusions (before 01.12.2026) | All |
 
 ### M2: Improvements (candidate directions)
 - **Smaller authentication:** KEMTLS (KEM-based authentication instead of handshake signatures), certificate compression, Merkle Tree Certificates
@@ -90,34 +76,3 @@ Final grade = **(2·M1 + M2 + M3) / 4**
 **Experiment 3: Compatibility and robustness (optional)**
 - Reproduce the effect of large, fragmented ClientHello messages on servers and middleboxes
 - Inspect hybrid handshakes in Wireshark and analyze downgrade behavior
-
-## Repository Structure (planned)
-
-```
-.
-├── README.md
-├── M1-overview/        # overview paper + weekly presentations
-├── M2-improvements/    # improvement proposals paper
-├── M3-paper/           # final scientific paper (LaTeX)
-├── experiments/
-│   ├── benchmark/      # lab testbed scripts and configs
-│   ├── scan/           # Internet adoption scanner
-│   └── results/        # raw data and plots
-└── references/         # bibliography (BibTeX) and notes
-```
-
-## References
-
-1. E. Rescorla, *The Transport Layer Security (TLS) Protocol Version 1.3*, RFC 8446, 2018.
-2. J. Iyengar, M. Thomson, *QUIC: A UDP-Based Multiplexed and Secure Transport*, RFC 9000, 2021.
-3. NIST, *FIPS 203: Module-Lattice-Based Key-Encapsulation Mechanism Standard*, 2024.
-4. NIST, *FIPS 204: Module-Lattice-Based Digital Signature Standard*, 2024.
-5. NIST, *FIPS 205: Stateless Hash-Based Digital Signature Standard*, 2024.
-6. D. Stebila, S. Fluhrer, S. Gueron, *Hybrid key exchange in TLS 1.3*, IETF draft-ietf-tls-hybrid-design.
-7. K. Kwiatkowski, P. Kampanakis, B. Westerbaan, D. Stebila, *Post-quantum hybrid ECDHE-MLKEM Key Agreement for TLSv1.3*, IETF draft-ietf-tls-ecdhe-mlkem.
-8. C. Paquin, D. Stebila, G. Tamvada, *Benchmarking Post-Quantum Cryptography in TLS*, PQCrypto 2020.
-9. P. Schwabe, D. Stebila, T. Wiggers, *Post-Quantum TLS Without Handshake Signatures*, ACM CCS 2020.
-10. D. Sikeridis, P. Kampanakis, M. Devetsikiotis, *Post-Quantum Authentication in TLS 1.3: A Performance Study*, NDSS 2020.
-11. W. Castryck, T. Decru, *An Efficient Key Recovery Attack on SIDH*, EUROCRYPT 2023.
-12. D. J. Bernstein et al., *KyberSlash: Exploiting secret-dependent division timings in Kyber implementations*, 2024.
-13. Open Quantum Safe project: https://openquantumsafe.org
